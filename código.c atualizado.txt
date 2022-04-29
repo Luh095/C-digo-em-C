@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <locale.h>
+
+#define tamanho 5
+
+char vetor[tamanho], valor;
+int n=0,i=0,j=0,posição,achou=0;
+
+inserir(char vetor[], char valor, int n){
+  if(tamanho == n)
+    printf("A lista está cheia");
+  else
+    vetor[n] = valor;
+    n++;
+}
+
+consultar(char vetor[], char valor, int n){
+  setlocale(LC_ALL, "portuguese");
+  for(i = 0; i < tamanho; i++)
+  if(vetor[i] == valor){
+    achou = 1;
+    printf("\nO valor %c está na posição %d da lista", valor, i + 1);
+  }
+  if(achou == 0)
+    printf("\n\nO valor %c não foi encontrado na lista", valor);
+}
+
+remover(char vetor[], char valor, int n){
+  for(i = 0; i < tamanho; i++){
+    if(vetor[i] == valor){
+      achou = 1;
+      for(j=i; j<tamanho; j++)
+        vetor[j] = vetor[j+1];
+    }
+    n--;
+  }
+  if(achou=0);
+     printf("\n\nO valor %c não foi encontrado na lista", valor);
+}
+
+main(){
+  setlocale(LC_ALL, "portuguese");
+  printf("Informe um char para inserir no vetor:");
+  scanf("%c",&valor);
+  fflush(stdin);
+  inserir(vetor, valor, n);
+
+  printf("A lista criada contèm os seguintes elementos: \n\n|");
+  for(posição=0; posição<tamanho; posição++)
+    printf("%c", vetor[posicao]);
+
+  setlocale(LC_ALL, "portuguese");
+
+  n = tamanho;
+
+  printf("\nInforme um char para procurar na lista:");
+  scanf("%c", &valor);
+  fflush(stdin);
+  consultar(vetor, valor, n)
+
+  printf("\n\nA lista criada contém os seguintes elementos: \n\n|");
+  for(posição=0; posição<tamanho; posição++)
+    printf("%c|", vetor[posição]);
+
+  n = tamnho;
+
+  printf("\nInforme um char para remover da lista:");
+  scanf("%s", &valor);
+  remover(vetor, valor, n);
+
+  printf("\n\nA lista criada contém os seguintes elementos: \n\n|");
+  for(posição=0; posição<tamanho; posição++)
+    printf("%c|", vetor[posição])
+}
