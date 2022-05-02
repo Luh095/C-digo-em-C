@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define tamanho 5
+
+char vetor [tamanho] = {'a', 'b', 'c', 'd', 'e'}, valor;
+int n=0, i=0, posicao, achou=0;
+
+consultar(char vetor[], char valor, int n) {
+  for(i=0; i<tamanho; i++)
+  if(vetor[i]== valor) {
+    achou = 1; 
+    printf("\nO valor %c esta na posicao %d da lista", valor, i+1);
+ }
+ if(achou==0)
+   printf("\n\nO valor %c não foi encontrado na lista", valor);
+}
+
+main() {
+  n = tamanho;
+  printf("Informe um char para procurar na lista:");
+  scanf("%c", &valor);
+  consultar(vetor, valor, n);
+
+  printf("\n\nA lista criada contem os seguintes elementos: \n\n|");
+     for(posicao=0; posicao<tamanho; posicao++)
+       printf("%c|", vetor[posicao]);
+}
