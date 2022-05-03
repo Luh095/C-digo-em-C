@@ -1,0 +1,99 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void iniciar(nodo *L){
+  L->prox = NULL;
+}
+
+voind inserirInicio(nodo *L, Produto *dado){
+  nodo *novo= (nodo *) malloc(sizeof(nodo));
+
+  strcpy(novo->dado.codigoBarras, dado.codigoBarras);
+  strcpy(novo->dado.descricao, dado.descricao);
+  novo->dado.categoria = dado.categoria;
+  novo->dado.preco = dado.preco;
+
+  novo->prox= L->prox;
+  L->prox = novo;
+}
+
+void inserirMeio(nodo *L, Produto *dado, char *produto){
+  nodo *novo= (nodo *) malloc(sizeof(nodo));
+
+  strcpy(novo->dado.codigoBarras, dado.codigoBarras);
+  strcpy(novo->dado.descricao, dado.descricao);
+  novo->dado.categoria = dado.categoria;
+  novo->dado.preco = dado.preco;
+
+  if (estaVazia(L))
+    L->prox= novo;
+  else {
+    nodo *tmp= NULL;
+    nodo *no= L->prox;
+    while(no!= NULL) {
+      if(strcmp(no->dado.descricao, produto) == 0){
+        tmp = no->prox;
+        no->prox = novo;
+        novo->prox=tmp
+      }
+      no= no->prox;
+    }
+  }
+}
+
+void inserirFinal(nodo *L, Produto *dado){
+  nodo *novo= (nodo *) malloc(sizeof(nodo));
+
+  strcpy(novo->dado.codigoBarras, dado.codigoBarras);
+  strcpy(novo->dado.descricao, dado.descricao);
+  novo->dado.categoria = dado.categoria;
+  novo->dado.preco = dado.preco;
+
+  if (estaVazia(L))
+    L->prox= novo;
+  else {
+    nodo *no= L-prox;
+    while(no->prox != NULL)
+      no= no->prox;
+
+    no->prox = novo;
+    }
+  }
+
+void excluirInicio(nodo *L){
+  no *noPrimeiro= L->prox;
+  L->prox= noPrimeiro->prox;
+  free(noPrimeiro);
+}
+
+void pesquisar(nodo *L, char *descricao){
+  if(estaVazia(L)){
+    printf("Lista vazia!\n\n");
+    return;
+  }
+  nodo *no= L->prox;
+  printf("%-8s %s \t%s %s \n",
+         "Codigo", "Descricao", "Valor", "Categoria");
+  while(no!= NULL) {
+    printf("%-8s %s \t%-6.2f %d \n",
+           no->dado.codigoBarras, no->dado.descricao,
+           no->dado.preco, no->dado.categoria);
+    no= no->prox;
+}
+  
+void imprimir (nodo *L) {
+  if(estaVazia(L)) {
+    printf("Lista vazia!\n\n");
+    return;
+  }
+  nodo *no= L->prox;
+  printf("%-8s %s \t%s %s \n",
+         "Codigo", "Descricao", "Valor", "Categoria");
+  while(no!= NULL) {
+    printf("%-8s %s \t%-6.2f %d \n",
+           no->dado.codigoBarras, no->dado.descricao,
+           no->dado.preco, no->dado.categoria);
+    no= no->prox;
+  }
+  printf("\n\n");
+}
